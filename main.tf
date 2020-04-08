@@ -84,6 +84,17 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
   policy = data.aws_iam_policy_document.policy_document.json
 }
 
+module "website_urls" {
+  alias_hosted_zone_id = module.cloudfront.hosted_zone_id
+  alias_name           = module.cloudfront.domain_name
+  domain_zone_id       = var.domain_zone_id
+  name                 = aws_s3_bucket.bucket.id
+  providers = {
+    aws.dnsProvider = aws.dnsProvider
+  }
+  source = "git@github.com:CharlesSieg/terraform-module-aws-route53.git?ref=master"
+}
+
 module "website_codebuild" {
   account_id                 = var.account_id
   app_name                   = var.app_name
