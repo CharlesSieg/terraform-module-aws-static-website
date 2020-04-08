@@ -84,18 +84,16 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
   policy = data.aws_iam_policy_document.policy_document.json
 }
 
-/*module "website_charlessieg" {
-  app_name        = "website-charlessieg"
-  aws_region      = data.aws_region.current.name
-  bucket_name     = "${var.subdomain}.charlessieg.com"
-  cloudfront_ttl  = var.cloudfront_ttl
-  create_secrets  = true
-  domain_zone_id  = data.aws_route53_zone.charlessieg.zone_id
-  environment     = var.environment
-  github_repo_url = "https://github.com/CharlesSieg/website-charlessieg-source.git"
+module "website_codebuild" {
+  account_id                 = var.account_id
+  app_name                   = var.app_name
+  aws_region                 = data.aws_region.current.name
+  bucket_id                  = aws_s3_bucket.bucket.id
+  cloudfront_distribution_id = module.cloudfront.distribution_id
+  environment                = var.environment
+  github_repo_url            = var.github_repo_url
   providers = {
-    aws.dnsProvider = aws.dnsProvider
-    aws.tools       = aws.tools
+    aws.tools = aws.tools
   }
-  source = "https://github.com/CharlesSieg/terraform-module-aws-static-website.git"
-}*/
+  source = "git@github.com:CharlesSieg/terraform-module-aws-codebuild.git?ref=master"
+}
