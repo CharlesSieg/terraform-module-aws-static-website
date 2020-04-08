@@ -84,7 +84,7 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
   policy = data.aws_iam_policy_document.policy_document.json
 }
 
-module "website_charlessieg" {
+/*module "website_charlessieg" {
   app_name        = "website-charlessieg"
   aws_region      = data.aws_region.current.name
   bucket_name     = "${var.subdomain}.charlessieg.com"
@@ -98,4 +98,4 @@ module "website_charlessieg" {
     aws.tools       = aws.tools
   }
   source = "https://github.com/CharlesSieg/terraform-module-aws-static-website.git"
-}
+}*/
