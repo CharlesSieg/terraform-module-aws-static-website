@@ -43,7 +43,7 @@ module "cloudfront" {
   cloudfront_ttl         = var.cloudfront_ttl
   environment            = var.environment
   origin_access_identity = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
-  source                 = "../cloudfront"
+  source                 = "git@github.com:CharlesSieg/terraform-module-aws-cloudfront.git?ref=master"
 }
 
 data "aws_iam_policy_document" "policy_document" {
