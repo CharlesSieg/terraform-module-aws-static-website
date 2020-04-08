@@ -1,3 +1,8 @@
+variable "account_id" {
+  description = ""
+  type        = string
+}
+
 variable "app_name" {
   description = "The app name used for tagging infrastructure."
   type        = string
