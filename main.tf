@@ -87,7 +87,7 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
 module "website_codebuild" {
   account_id                 = var.account_id
   app_name                   = var.app_name
-  aws_region                 = data.aws_region.current.name
+  aws_region                 = var.aws_region
   bucket_id                  = aws_s3_bucket.bucket.id
   cloudfront_distribution_id = module.cloudfront.distribution_id
   environment                = var.environment
