@@ -1,10 +1,10 @@
-variable "account_id" {
-  description = ""
+variable "app_name" {
+  description = "The app name used for tagging infrastructure."
   type        = string
 }
 
-variable "app_name" {
-  description = "The app name used for tagging infrastructure."
+variable "aws_account_id" {
+  description = "REQUIRED. The account ID for the AWS account in which the infrastructure will be provisioned."
   type        = string
 }
 
@@ -24,6 +24,7 @@ variable "cloudfront_ttl" {
 }
 
 variable "domain_zone_id" {
+  default     = null
   description = "DNS zone where host names will be created."
   type        = string
 }
