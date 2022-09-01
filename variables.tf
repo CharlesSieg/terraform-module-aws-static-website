@@ -29,6 +29,11 @@ variable "github_repo_url" {
   type        = string
 }
 
+variable "lambda_arn" {
+  description = ""
+  type        = string
+}
+
 variable "name" {
   description = "The app name used for tagging infrastructure."
   type        = string
