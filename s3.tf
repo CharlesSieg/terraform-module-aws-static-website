@@ -1,12 +1,17 @@
 resource "aws_s3_bucket" "bucket" {
-  acl           = "private"
   bucket        = var.bucket_name
   force_destroy = true
   tags          = merge(var.tags, { Name = var.bucket_name })
-
-  website {
-    index_document = "index.html"
-    error_document = "404.html"
-  }
 }
 
+resource "aws_s3_bucket_website_configuration" "this" {
+  bucket = aws_s3_bucket.bucket.bucket.id
+
+  error_document {
+    key = "404.html"
+  }
+
+  index_document {
+    suffix = "index.html"
+  }
+}
