@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "bucket" {
 }
 
 resource "aws_s3_bucket_website_configuration" "this" {
-  bucket = aws_s3_bucket.bucket.bucket.id
+  bucket = aws_s3_bucket.bucket.id
 
   error_document {
     key = "404.html"
