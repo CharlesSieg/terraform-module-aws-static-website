@@ -10,7 +10,7 @@ module "cloudfront" {
   name                   = var.name
   name_prefix            = var.name_prefix
   origin_access_identity = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
+  origin_path = var.origin_path
   source                 = "git@github.com:CharlesSieg/terraform-module-aws-cloudfront.git?ref=master"
   tags                   = var.tags
 }
-
